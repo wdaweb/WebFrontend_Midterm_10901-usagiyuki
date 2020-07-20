@@ -45,8 +45,17 @@
                 </div>
             </form>
         </article>
+        <article class="verify-bg">
+
+        </article>
+        <article class="verify row justify-content-center align-items-center">
+            <div class="spinner-border text-primary"></div>
+            <span class="text-white">驗證中...</span>
+        </article>
     </section>
 	<script>
+        let verify = $(".verify");
+        let verifybg = $(".verify-bg");
         const PATH = "https://cors-anywhere.herokuapp.com/http://220.128.133.15/s1090212/php/resume/";
         document.onkeydown = () => {
             if (event.keyCode == 13) {
@@ -54,12 +63,16 @@
             }
         }        
 		function send () {
+            verify.css("visibility", "visible");
+            verifybg.toggle();
 			fdata = document.getElementsByTagName("form")[0];
 			let ary={};
 			for (i = 0; i < fdata.length; i++ ) {
 				ary[fdata[i].name] = fdata[i].value;
 			}
 			$.post(PATH + "api/login.php",ary,function(res){
+                verify.css("visibility", "hidden");
+                verifybg.toggle();
 				let jda = JSON.parse(res);
 				if (typeof(jda['rn']) == "string") {
 					alert(jda['rn']);
@@ -71,7 +84,7 @@
 					
 					document.cookie="userid=" + jda['rn'] + ";expires="+dd.toUTCString();
 					location.href = "./";
-				}
+                }
 			})
 		}
 	</script>

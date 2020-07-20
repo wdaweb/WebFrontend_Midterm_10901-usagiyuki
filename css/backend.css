@@ -87,3 +87,32 @@ div.custom-file:not(.col-md-3){
 .img-thumbnail{
     height: auto;
 }
+
+.verify{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	visibility:hidden;
+}
+
+.verify div{
+	width: 4rem;
+	height: 4rem;
+}
+
+.verify span{
+	font-size : 5rem; 
+}
+
+.verify-bg{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;	
+	background: black;
+	opacity: 0.5;
+	width: 100vw;
+	height: 100vh;
+}
