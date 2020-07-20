@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/6baeea78ae.js"></script>
     <script src="./js/js.js"></script>    
     <script src="./plugins/jquery-3.5.1.min.js"></script>
+    <script src="./plugins/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-secondary">
     <header class="bg-dark fixed-top">
@@ -336,8 +337,8 @@
             $.post(PATH + "api/frontdata.php", {uid, type, index, dtype}, function(res) {                
                 let jda = JSON.parse(res);
                 if ((jda['rn']) && (jda['rn'].length != 0)) {
-                    let nature =["正職", "兼職", "見習",];
-                    let period =["早班", "晚班", "大夜班",];
+                    let nature =["見習", "正職", "兼職", "見習",];
+                    let period =["無職", "早班", "晚班", "大夜班",];
                     let da = jda['rn'];
                     job.innerHTML += `<article class="container py-5 text-center">
                         <div class="row">
@@ -417,30 +418,30 @@
                 if ((jda['rn']) && (jda['rn'].length != 0)) {
                     let da = jda['rn'];
                     ab.innerHTML = "";
-                    let htext = `<header class="container text-center">
-                            <h2 class="pb-3 ">影像作品</h2>
+                    let oltext = `<header class="container text-center">
+                            <h2 class="pb-3">影像作品</h2>
                         </header>
                         <ol class="carousel-indicators">`;
                     for(let i = 0; i < da.length; i++) {
                         let active = "";
                         if (i == 0) {
-                            active = "active";
+                            active = "class='active'";
                         }
-                        htext += `<li data-target="#album" data-slide-to=${i} class=${active}></li>`;
+                        oltext += `<li data-target="#album" data-slide-to=${i} ${active}></li>`;
                     }
-                    htext += `</ol>`;
-                    ab.innerHTML += htext;
-                    htext = `<div class="carousel-inner">`;
+                    oltext += `</ol>`;
+                    
+                    let imgtext = `<div class="carousel-inner">`;
                     for(let i = 0; i < da.length; i++) {
                         let active = "";
                         if (i == 0) {
                             active = "active";
                         }
-                        htext += `<div class="vh-100 carousel-item ${active}">
+                        imgtext += `<div class="vh-100 carousel-item ${active}">
                             <img src=${da[i]['path']} class="w-100 h-100">
                         </div>`;
                     }
-                    ab.innerHTML += htext + `</div>
+                    ab.innerHTML = oltext + imgtext + `</div>
                     <a class="carousel-control-prev" href="#album" role="button" data-slide="prev">
                         <span class="fas fa-chevron-circle-left fa-3x"></span>
                     </a>
@@ -453,6 +454,5 @@
 
         getper();
     </script>
-    <script src="./plugins/bootstrap.bundle.min.js"></script>
 </body>
 </html>
