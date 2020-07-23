@@ -96,6 +96,14 @@
         let l_in = $(".fa-sign-in-alt");
         let l_out = $("#logout");
 
+        $("#personal").hide();
+        $("#education").hide();
+        $("#experience").hide();
+        $("#autobiography").hide();
+        $("#jobconditions").hide();
+        $("#works").hide();
+        $("#album").hide();
+
         if (cid) {
             l_out.removeClass("hide");
             l_in.parent().attr("href", "./backend/");
@@ -171,6 +179,7 @@
                         </div>
                     </article">`;
                 }
+                $("#personal").slideDown(1000);
                 getedu();
             });
         }
@@ -219,6 +228,7 @@
                     }
                     edu.innerHTML += `<article class="container py-5 text-center">` + ht_tmp + `</article>`;
                 }
+                $("#education").fadeIn(1000);
                 getexp();
             });
         }
@@ -273,6 +283,7 @@
                     }
                     exp.innerHTML += `<article class="container py-5 text-center">` + ht_tmp + `</article>`;
                 }
+                $("#experience").fadeIn(1000);
                 getauto();
             });
         }
@@ -309,6 +320,7 @@
                         </div>
                         </article>`;
                 }
+                $("#autobiography").fadeIn(1000);
                 getjob();
             });
         }
@@ -365,6 +377,7 @@
                         </div>
                     </article">`;
                 }
+                $("#jobconditions").fadeIn(1000);
                 getworks();
             });
         }
@@ -405,6 +418,7 @@
                     }
                     works.innerHTML += `<article class="container py-5 text-center text-dark"> <div class="row justify-content-around">` + ht_tmp + `</div> </article>`;
                 }
+                $("#works").fadeIn(1000);
                 getab();
             });
         }
@@ -449,6 +463,7 @@
                         <span class="fas fa-chevron-circle-right fa-3x"></span>
                     </a>`;
                 }
+                $("#album").fadeIn(1000);
             })
         }
 
